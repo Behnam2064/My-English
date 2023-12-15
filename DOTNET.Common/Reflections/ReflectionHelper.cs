@@ -14,6 +14,10 @@ namespace DOTNET.Common.Reflections
         /// <summary>
         /// https://stackoverflow.com/questions/10261824/how-can-i-get-all-constants-of-a-type-by-reflection
         /// How can I get all constants of a type by reflection?
+        /// 
+        /// https://stackoverflow.com/questions/33477163/get-value-of-constant-by-name
+        /// To get field values or call members on static types using reflection you pass null as the instance reference.
+        ///     typeof(Test).GetField("Value").GetValue(null).Dump();
         /// </summary>
         /// <param name="type">The type in which it is to be searched</param>
         /// <returns>Constants found</returns>
