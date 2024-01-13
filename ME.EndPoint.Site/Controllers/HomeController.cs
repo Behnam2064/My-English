@@ -1,4 +1,5 @@
 using ME.EndPoint.Site.Models;
+using ME.Entities.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -8,7 +9,7 @@ namespace ME.EndPoint.Site.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IDataBaseContext db)
         {
             _logger = logger;
         }

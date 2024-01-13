@@ -29,6 +29,6 @@ namespace ME.Entities.Database
 
         public virtual ICollection<TableViewInfo> TableViewInfos { get; set; } = new List<TableViewInfo>();
 
-        public virtual ICollection<Wdescription> Wdescriptions { get; set; } = new List<Wdescription>();
+        public virtual ICollection<WDescription> Wdescriptions { get; set; } = new List<WDescription>();
     }
 }

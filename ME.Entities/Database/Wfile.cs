@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ME.Entities.Database
 {
@@ -10,11 +11,11 @@ namespace ME.Entities.Database
         public long UserId { get; set; }
 
         public long? MyWordId { get; set; }
-
+        [MaxLength(128)]
         public string? FileName { get; set; }
 
         public long? FolderId { get; set; }
-
+        [MaxLength(4)]
         public string? FileType { get; set; }
 
         public int? Category { get; set; }

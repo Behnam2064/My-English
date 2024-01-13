@@ -1,4 +1,5 @@
 using ME.DataSource.Contexts;
+using ME.Entities.Interfaces.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -7,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<MySelfStudyDictionary2Db>(options =>
+builder.Services.AddDbContext<IDataBaseContext,MySelfStudyDictionary2Db>(options =>
 {
     ConfigurationManager configuration = new ConfigurationManager();
 #if DEBUG

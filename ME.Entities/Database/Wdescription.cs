@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ME.Entities.Database
 {
-    public partial class Wdescription
+    public partial class WDescription
 {
     public Guid Id { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using ME.Entities.Database;
+using ME.Entities.Interfaces.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ME.DataSource.Contexts
 {
-    public class MySelfStudyDictionary2Db : DbContext
+    public class MySelfStudyDictionary2Db : DbContext , IDataBaseContext
     {
 
         #region Fields
@@ -57,7 +58,7 @@ namespace ME.DataSource.Contexts
 
         public virtual DbSet<User> Users { get; set; }
 
-        public virtual DbSet<Wdescription> Wdescriptions { get; set; }
+        public virtual DbSet<WDescription> Wdescriptions { get; set; }
 
         public virtual DbSet<Wfile> Wfiles { get; set; }
 

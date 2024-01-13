@@ -43,7 +43,7 @@ namespace ME.Entities.Database
 
         public virtual User User { get; set; } = null!;
 
-        public virtual ICollection<Wdescription> Wdescriptions { get; set; } = new List<Wdescription>();
+        public virtual ICollection<WDescription> Wdescriptions { get; set; } = new List<WDescription>();
 
         public virtual ICollection<Wfile> Wfiles { get; set; } = new List<Wfile>();
     }
