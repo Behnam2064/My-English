@@ -1,9 +1,26 @@
+using ME.DataSource.Contexts;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDbContext<MySelfStudyDictionary2Db>(options =>
+{
+    ConfigurationManager configuration = new ConfigurationManager();
+#if DEBUG
+    configuration.AddJsonFile("appsettings.Development.json");
+#else
+    configuration.AddJsonFile("appsettings.json");
+#endif
+    string? connectionString = configuration["Database:ConnectionString"]?.ToString();
+    options.UseSqlServer(connectionString);
+});
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

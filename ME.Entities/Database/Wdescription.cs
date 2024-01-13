@@ -7,7 +7,7 @@ namespace ME.Entities.Database
 {
     public Guid Id { get; set; }
 
-    public long UserId { get; set; }
+    public long? UserId { get; set; }
 
     public long MyWordId { get; set; }
 
@@ -15,6 +15,6 @@ namespace ME.Entities.Database
 
     public virtual MyWord MyWord { get; set; } = null!;
 
-    public virtual User User { get; set; } = null!;
+    public virtual User? User { get; set; } = null!;
 }
 }

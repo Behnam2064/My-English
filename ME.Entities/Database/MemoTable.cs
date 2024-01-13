@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.UserControls.Enums;
+using System;
 using System.Collections.Generic;
 
 namespace ME.Entities.Database
@@ -12,7 +13,7 @@ namespace ME.Entities.Database
     /// </summary>
     public long UserId { get; set; }
 
-    public long Section { get; set; }
+    public MemoSections Section { get; set; }
 
     public string Text { get; set; } = null!;
 

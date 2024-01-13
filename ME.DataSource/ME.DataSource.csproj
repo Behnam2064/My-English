@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ME.Application\ME.Application.csproj" />
-    <ProjectReference Include="..\ME.Entities\ME.Entities.csproj" />
+    <Compile Remove="Contexts\MySelfStudyDictionary1Context.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contexts\" />
+    <ProjectReference Include="..\ME.Application\ME.Application.csproj" />
+    <ProjectReference Include="..\ME.Entities\ME.Entities.csproj" />
   </ItemGroup>
 
   <ItemGroup>
