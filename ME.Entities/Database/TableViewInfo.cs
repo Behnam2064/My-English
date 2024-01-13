@@ -12,7 +12,7 @@ namespace ME.Entities.Database
 
         public long TableId { get; set; }
 
-        [MaxLength(128)]
+        [StringLength(128)]
         public string TableName { get; set; } = null!;
 
         public DateTime TimeView { get; set; }

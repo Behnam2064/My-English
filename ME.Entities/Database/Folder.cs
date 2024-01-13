@@ -22,7 +22,7 @@ namespace ME.Entities.Database
 
         public long? TagId { get; set; }
 
-        [MaxLength(128)]
+        [StringLength(128)]
         public string Name { get; set; } = null!;
 
         public DateTime AddDateTime { get; set; }

@@ -13,12 +13,12 @@ namespace ME.Entities.Database
 
         public long? FolderId { get; set; }
 
-        [MaxLength(1000)]
+        [StringLength(1000)]
         public string Name { get; set; } = null!;
 
         public int? WordType { get; set; }
 
-        [MaxLength(1000)]
+        [StringLength(1000)]
         public string? Dictation { get; set; }
 
         public DateTime AddDateTime { get; set; }

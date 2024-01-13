@@ -8,15 +8,15 @@ namespace ME.Entities.Database
     public partial class User
     {
         public long Id { get; set; }
-        [MaxLength(30)]
+        [StringLength(30)]
         public string? Name { get; set; }
-        [MaxLength(50)]
+        [StringLength(50)]
         public string? LastName { get; set; }
-        [MaxLength(20)]
+        [StringLength(20)]
         public string Username { get; set; } = null!;
-        [MaxLength(64)]
+        [StringLength(64)]
         public string? Password { get; set; }
-        [MaxLength(13)]
+        [StringLength(13)]
         public string? Mobile { get; set; }
 
         public virtual ICollection<Folder> Folders { get; set; } = new List<Folder>();
