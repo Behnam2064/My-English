@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ME.DataSource.Contexts
 {
-    public class MySelfStudyDictionary2Db : DbContext , IDataBaseContext
+    public class MySelfStudyDictionary2Db : DbContext, IDataBaseContext
     {
 
         #region Fields
@@ -22,14 +22,42 @@ namespace ME.DataSource.Contexts
         #endregion
 
         #region Constructors
-        public MySelfStudyDictionary2Db(DbContextOptions options) : base(options)
+        public MySelfStudyDictionary2Db(DbContextOptions options,IConfiguration configuration, IFileStreamGenerator streamGenerator) : base(options)
         {
             this.options = options;
 
             if (!IsEnsureCreated)
             {
                 IsEnsureCreated = true;
-                this.Database.EnsureCreatedAsync().Wait();
+                Task<bool> task = this.Database.EnsureCreatedAsync();
+                task.Wait();
+                if(task.Result) 
+                {
+
+                    // First time to run 
+                    // Trying to generate FILESTREAM tables
+                    string FileStreamPath = configuration["Database:FileStreamPath"].ToString();
+
+                    streamGenerator.ConnectionString =
+                        streamGenerator.ConvertEFConnectionString(this.Database.GetConnectionString());
+
+                    streamGenerator.Open();
+                    streamGenerator.Generate(new Entities.Generals.FileStreamGeneratorArguments()
+                    {
+                        ColumnName = nameof(WFile.FileData),
+                        FileGroupName = nameof(MySelfStudyDictionary2Db) + "FileStream",
+                        TableName = nameof(Wfiles),
+                        FileStreamPath = FileStreamPath,
+                        DatabaseName = nameof(MySelfStudyDictionary2Db),
+                        FolderName = "FS",
+                        PrimarykeyName = nameof(WFile.Id)
+                    });
+                    streamGenerator.Close();
+
+                   
+                }
+
+
             }
         }
         #endregion
@@ -60,13 +88,9 @@ namespace ME.DataSource.Contexts
 
         public virtual DbSet<WDescription> Wdescriptions { get; set; }
 
-        public virtual DbSet<Wfile> Wfiles { get; set; }
+        public virtual DbSet<WFile> Wfiles { get; set; }
 
         #endregion
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer();
-        //}
     }
 }

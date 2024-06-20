@@ -1,3 +1,4 @@
+using ME.Application.Services.AdoDotNets;
 using ME.DataSource.Contexts;
 using ME.Entities.Interfaces.Services;
 using Microsoft.EntityFrameworkCore;
@@ -7,8 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.Add(new ServiceDescriptor(typeof(IFileStreamGenerator), typeof(FileStreamGenerator), ServiceLifetime.Transient));
 
-builder.Services.AddDbContext<IDataBaseContext,MySelfStudyDictionary2Db>(options =>
+builder.Services.AddDbContext<IDataBaseContext, MySelfStudyDictionary2Db>(options =>
 {
     ConfigurationManager configuration = new ConfigurationManager();
 #if DEBUG

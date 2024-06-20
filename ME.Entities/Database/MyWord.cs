@@ -45,6 +45,6 @@ namespace ME.Entities.Database
 
         public virtual ICollection<WDescription> Wdescriptions { get; set; } = new List<WDescription>();
 
-        public virtual ICollection<Wfile> Wfiles { get; set; } = new List<Wfile>();
+        //public virtual ICollection<WFile> Wfiles { get; set; } = new List<WFile>();
     }
 }
