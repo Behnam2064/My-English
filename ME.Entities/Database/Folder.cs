@@ -29,8 +29,15 @@ namespace ME.Entities.Database
 
         public bool IsDeleted { get; set; }
 
-        public virtual ICollection<MyWord> MyWords { get; set; } = new List<MyWord>();
+        public DateTime? DeletedDateTime { get; set; }
+
+        public virtual ICollection<MyWord> MyWords { get; set; }
 
         public virtual User User { get; set; } = null!;
+
+        public Folder()
+        {
+            MyWords = new List<MyWord>();
+        }
     }
 }

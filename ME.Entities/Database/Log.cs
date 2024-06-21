@@ -34,8 +34,10 @@ namespace ME.Entities.Database
         public string? ExceptionName { get; set; }
         [NotMapped]
         public string? ClassName { get; set; }
+
         [NotMapped] // New version
         public string? MethodName { get; set; }
+
         [NotMapped] // New version
         public int? LineNumber { get; set; }
 

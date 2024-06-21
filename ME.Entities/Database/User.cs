@@ -19,6 +19,9 @@ namespace ME.Entities.Database
         [StringLength(13)]
         public string? Mobile { get; set; }
 
+        [StringLength(320)]
+        public string? Gmail { get; set; }
+
         public virtual ICollection<Folder> Folders { get; set; } = new List<Folder>();
 
         public virtual ICollection<Log> Logs { get; set; } = new List<Log>();

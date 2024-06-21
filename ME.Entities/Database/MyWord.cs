@@ -14,12 +14,9 @@ namespace ME.Entities.Database
         public long? FolderId { get; set; }
 
         [StringLength(1000)]
-        public string Name { get; set; } = null!;
+        public string Text { get; set; } = null!;
 
         public int? WordType { get; set; }
-
-        [StringLength(1000)]
-        public string? Dictation { get; set; }
 
         public DateTime AddDateTime { get; set; }
 
@@ -46,5 +43,6 @@ namespace ME.Entities.Database
         public virtual ICollection<WDescription> Wdescriptions { get; set; } = new List<WDescription>();
 
         public virtual ICollection<Wfile> Wfiles { get; set; } = new List<Wfile>();
+        public virtual ICollection<Dictation> WDictations { get; set; } = new List<Dictation>();
     }
 }
