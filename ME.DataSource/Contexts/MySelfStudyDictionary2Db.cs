@@ -34,6 +34,29 @@ namespace ME.DataSource.Contexts
         }
         #endregion
 
+
+        /*
+         *MySql
+                protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+                {
+                    //base.OnConfiguring(optionsBuilder);
+                    ConnectionString = config[nameof(DatabaseTCD) + ":" + "ConnectionString"];
+                    optionsBuilder.UseMySQL(ConnectionString);
+                }
+
+
+         */
+
+
+/*
+        SQL Server
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer();
+        }
+
+*/
+
         #region DbSets
 
         public virtual DbSet<Folder> Folders { get; set; }
@@ -66,10 +89,5 @@ namespace ME.DataSource.Contexts
 
         public virtual DbSet<EmployeeRole> EmployeeRoles { get; set; }
         #endregion
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer();
-        //}
     }
 }

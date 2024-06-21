@@ -15,4 +15,9 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.4.0" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="8.0.2" />
+  </ItemGroup>
+
 </Project>
