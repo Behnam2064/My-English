@@ -1,7 +1,7 @@
 ﻿using ME.Entities.Database;
 using ME.Entities.Interfaces.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+//using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,8 +60,11 @@ namespace ME.DataSource.Contexts
 
         public virtual DbSet<WDescription> Wdescriptions { get; set; }
 
-        public virtual DbSet<Wfile> Wfiles { get; set; }
+        public DbSet<Wfile> Wfiles { get; set; }
 
+        public virtual DbSet<Employee> Employees { get; set; }
+
+        public virtual DbSet<EmployeeRole> EmployeeRoles { get; set; }
         #endregion
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
