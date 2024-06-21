@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{1A7C5B2F-3EBC-4114-88BE-8B33383BEF16}"
 	ProjectSection(SolutionItems) = preProject
 		Clean Architecture.png = Clean Architecture.png
+		MySql EF Core.txt = MySql EF Core.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CB692E0F-8D38-4E6C-A7AB-F8F70641250F}"

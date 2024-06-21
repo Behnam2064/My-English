@@ -1,4 +1,5 @@
 using ME.DataSource.Contexts;
+using ME.EndPoint.Site;
 using ME.Entities.Interfaces.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -8,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<IDataBaseContext,MySelfStudyDictionary2Db>(options =>
+builder.Services.AddDbContext<IDataBaseContext, MySelfStudyDictionary2Db>(options =>
 {
     ConfigurationManager configuration = new ConfigurationManager();
 #if DEBUG
@@ -16,8 +17,33 @@ builder.Services.AddDbContext<IDataBaseContext,MySelfStudyDictionary2Db>(options
 #else
     configuration.AddJsonFile("appsettings.json");
 #endif
-    string? connectionString = configuration["Database:ConnectionString"]?.ToString();
-    options.UseSqlServer(connectionString);
+
+    SQLProviderType providerType = SQLProviderType.MySql;
+    string? sqlProviderTypeString = configuration["Database:ProviderType"]?.ToString();
+
+    if (string.IsNullOrEmpty(sqlProviderTypeString))
+    {
+        providerType = (SQLProviderType)Enum.Parse(typeof(SQLProviderType), sqlProviderTypeString, true);
+    }
+
+
+    string? connectionString = string.Empty;
+    if (providerType == SQLProviderType.MySql)
+    {
+        connectionString = configuration["Database:ConnectionString_" + providerType]?.ToString();
+        options.UseMySQL(connectionString);
+
+    }
+    else if (providerType == SQLProviderType.SQLServer)
+    {
+        connectionString = configuration["Database:ConnectionString_" + providerType]?.ToString();
+        options.UseSqlServer(connectionString);
+        
+    }
+    else
+        throw new NotImplementedException();
+    
+
 });
 
 var app = builder.Build();

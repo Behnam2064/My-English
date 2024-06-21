@@ -1,0 +1,2 @@
+https://www.c-sharpcorner.com/blogs/mysqlentityframeworkcodefirst-for-net-developers#:~:text=Download%20Entity%20Framework%20from%20NuGet,Framework%20assemblies%20in%20your%20project.&text=Run%20this%20command%20in%20Package%20Management%20Console%20to%20download%20Entity%20Framework.&text=Configuring%20MySQL%20to%20use%20Entity,block%20below%20to%20your%20Web.
+
