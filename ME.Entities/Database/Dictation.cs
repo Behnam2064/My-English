@@ -9,6 +9,7 @@ namespace ME.Entities.Database
 {
     public class Dictation
     {
+        public long Id { get; set; }
         public long MyWordId { get; set; }
 
         [Required]
