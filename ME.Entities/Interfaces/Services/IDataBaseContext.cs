@@ -10,7 +10,6 @@ namespace ME.Entities.Interfaces.Services
 {
     public interface IDataBaseContext
     {
-
         public DbSet<Folder> Folders { get; set; }
 
         public DbSet<Log> Logs { get; set; }
@@ -36,6 +35,10 @@ namespace ME.Entities.Interfaces.Services
         public DbSet<WDescription> Wdescriptions { get; set; }
 
         public DbSet<Wfile> Wfiles { get; set; }
+
+        public DbSet<Employee> Employees { get; set; }
+
+        public DbSet<EmployeeRole> EmployeeRoles { get; set; }
 
     }
 }

@@ -22,4 +22,8 @@ namespace Models.UserControls.Enums
         WDescription,
         WFile,
     }
+    public enum EmployeeRoleEnum
+    {
+        Admin
+    }
 }
