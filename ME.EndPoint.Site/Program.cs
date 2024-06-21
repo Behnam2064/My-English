@@ -21,7 +21,7 @@ builder.Services.AddDbContext<IDataBaseContext, MySelfStudyDictionary2Db>(option
     SQLProviderType providerType = SQLProviderType.MySql;
     string? sqlProviderTypeString = configuration["Database:ProviderType"]?.ToString();
 
-    if (string.IsNullOrEmpty(sqlProviderTypeString))
+    if (!string.IsNullOrEmpty(sqlProviderTypeString))
     {
         providerType = (SQLProviderType)Enum.Parse(typeof(SQLProviderType), sqlProviderTypeString, true);
     }
