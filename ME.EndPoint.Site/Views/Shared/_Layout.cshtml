@@ -1,4 +1,25 @@
-﻿<!DOCTYPE html>
+﻿@using ME.Application.Interfaces
+@using ME.EndPoint.Site.Controllers
+@using ME.EndPoint.Site.Resources
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IStringLocalizerResource localizer2
+@{
+    bool enUSSelected = false;
+    bool faUSSelected = false;
+    if (localizer2["CurrentCultureCode"] == "en-US")
+        enUSSelected = true;
+
+    if (localizer2["CurrentCultureCode"] == "fa-IR")
+        faUSSelected = true;
+
+    List<SelectListItem> items = new List<SelectListItem>();
+
+    items.Add(new SelectListItem() { Value = "en-US", Text = "English", Selected = enUSSelected });
+    items.Add(new SelectListItem() { Value = "fa-IR", Text = "فارسی", Selected = faUSSelected });
+
+
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -17,6 +38,11 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                @using (Html.BeginForm(method: FormMethod.Post, actionName: nameof(HomeController.SetLanguage),controllerName: nameof(HomeController).Replace(nameof(Controller),"") ))
+                {
+                    @Html.DropDownList("culture", items, new { name = "culture", onchange = "this.form.submit();" })
+                    <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+                }
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
