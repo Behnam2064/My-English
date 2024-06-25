@@ -1,4 +1,4 @@
-﻿namespace ME.EndPoint.Site
+﻿namespace Models.UserControls.Enums
 {
     public enum SQLProviderType
     {
