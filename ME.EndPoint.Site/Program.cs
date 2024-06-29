@@ -32,7 +32,7 @@ builder.Services
 builder.Services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
 
 
-var supportedCultures = new[] { "fa-IR", "en-US"}
+var supportedCultures = new[] { "fa-IR", "en-US" }
     .Select(culture => new CultureInfo(culture))
     .ToList();
 
@@ -49,37 +49,37 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
 #region Database setup
 builder.Services.AddDbContext<IDataBaseContext, MySelfStudyDictionary2Db>(options =>
 {
-ConfigurationManager configuration = new ConfigurationManager();
+    ConfigurationManager configuration = new ConfigurationManager();
 #if DEBUG
 configuration.AddJsonFile("appsettings.Development.json");
 #else
     configuration.AddJsonFile("appsettings.json");
 #endif
 
-SQLProviderType providerType = SQLProviderType.MySql;
-string? sqlProviderTypeString = configuration["Database:ProviderType"]?.ToString();
+    SQLProviderType providerType = SQLProviderType.MySql;
+    string? sqlProviderTypeString = configuration["Database:ProviderType"]?.ToString();
 
-if (!string.IsNullOrEmpty(sqlProviderTypeString))
-{
-providerType = (SQLProviderType)Enum.Parse(typeof(SQLProviderType), sqlProviderTypeString, true);
-}
+    if (!string.IsNullOrEmpty(sqlProviderTypeString))
+    {
+        providerType = (SQLProviderType)Enum.Parse(typeof(SQLProviderType), sqlProviderTypeString, true);
+    }
 
 
-string? connectionString = string.Empty;
-if (providerType == SQLProviderType.MySql)
-{
-connectionString = configuration["Database:ConnectionString_" + providerType]?.ToString();
-options.UseMySQL(connectionString);
+    string? connectionString = string.Empty;
+    if (providerType == SQLProviderType.MySql)
+    {
+        connectionString = configuration["Database:ConnectionString_" + providerType]?.ToString();
+        options.UseMySQL(connectionString);
 
-}
-else if (providerType == SQLProviderType.SQLServer)
-{
-connectionString = configuration["Database:ConnectionString_" + providerType]?.ToString();
-options.UseSqlServer(connectionString);
+    }
+    else if (providerType == SQLProviderType.SQLServer)
+    {
+        connectionString = configuration["Database:ConnectionString_" + providerType]?.ToString();
+        options.UseSqlServer(connectionString);
 
-}
-else
-throw new NotImplementedException();
+    }
+    else
+        throw new NotImplementedException();
 
 
 });
