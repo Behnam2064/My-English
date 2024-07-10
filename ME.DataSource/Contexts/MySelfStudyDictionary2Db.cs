@@ -29,12 +29,15 @@ namespace ME.DataSource.Contexts
             if (!IsEnsureCreated)
             {
                 IsEnsureCreated = true;
-                this.Database.EnsureCreatedAsync().Wait();
+                Database.MigrateAsync().Wait();
+                //this.Database.EnsureCreatedAsync().Wait();
             }
         }
         #endregion
 
+        #region SQL Type
 
+        #region Use MySQL
         /*
          *MySql
                 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -47,18 +50,23 @@ namespace ME.DataSource.Contexts
 
          */
 
+        #endregion
 
-/*
-        SQL Server
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer();
-        }
+        #region Use sql server
 
-*/
+        /*
+                SQL Server
+                protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+                {
+                    optionsBuilder.UseSqlServer();
+                }
+        */
+
+        #endregion
+
+        #endregion
 
         #region DbSets
-
         public virtual DbSet<Folder> Folders { get; set; }
 
         public virtual DbSet<Log> Logs { get; set; }
